@@ -23,7 +23,7 @@ class AnimateToDetailVCController : NSObject, UIViewControllerAnimatedTransition
     let cell = fromViewController.tableView.cellForRowAtIndexPath(selectedRow!) as WeatherCell
     let weatherSnapshot = cell.forecastImage.snapshotViewAfterScreenUpdates(false)
 
-    weatherSnapshot.frame = containerView.convertRect(cell.forecastImage.frame, fromView: fromViewController.tableView.cellForRowAtIndexPath(selectedRow!)?.superview)
+    weatherSnapshot.frame = containerView.convertRect(cell.forecastImage.frame, fromView: fromViewController.tableView.cellForRowAtIndexPath(selectedRow!))
     cell.forecastImage.hidden = true
     toViewController.view.frame = transitionContext.finalFrameForViewController(toViewController)
     toViewController.view.alpha = 0

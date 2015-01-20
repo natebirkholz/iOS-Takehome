@@ -14,6 +14,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
   @IBOutlet weak var tableView: UITableView!
 
+  @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
   var forecasts : [Forecast]?
   var networkController : NetworkController!
 
@@ -35,10 +37,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-
+    self.activityIndicator.startAnimating()
     self.networkController.getJSONForForecasts({ (forecasts) -> (Void) in
       self.forecasts = forecasts
       self.tableView.reloadData()
+      self.activityIndicator.stopAnimating()
     })
   }
 

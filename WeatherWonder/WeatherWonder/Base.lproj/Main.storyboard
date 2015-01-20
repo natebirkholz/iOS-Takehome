@@ -22,6 +22,9 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="wDW-7f-orG">
+                                <rect key="frame" x="0.0" y="290" width="600" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -33,6 +36,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Seven Day" id="n9I-7s-hgN"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="wDW-7f-orG" id="FO6-ex-mwN"/>
                         <outlet property="tableView" destination="za9-j4-Whs" id="qVo-sG-TXD"/>
                         <segue destination="FRT-Pm-atH" kind="show" identifier="SHOW_DETAIL" id="qSq-S4-LIL"/>
                     </connections>
@@ -116,7 +120,6 @@
                                 <exclude reference="YSa-Av-kyL"/>
                             </mask>
                         </variation>
-                        <variation key="heightClass=compact"/>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
                                 <exclude reference="DyN-GJ-bAw"/>
