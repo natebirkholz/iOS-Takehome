@@ -13,14 +13,14 @@ class JsonParser {
   func parseJSONIntoForecasts(rawJSONData: NSData) -> [Forecast] {
     var error : NSError?
 
-    if let dictionaryFromJSON = NSJSONSerialization.JSONObjectWithData(rawJSONData, options: NSJSONReadingOptions.AllowFragments, error: &error) as? NSDictionary {
+    if let dictionaryFromJSON = NSJSONSerialization.JSONObjectWithData(rawJSONData, options: NSJSONReadingOptions.AllowFragments, error: &error) as? [String : AnyObject] {
       var arrayOfForecasts = [Forecast]()
 
-      if let arrayFromJSON = dictionaryFromJSON["list"]! as? NSArray {
+      if let arrayFromJSON = dictionaryFromJSON["list"]! as? [AnyObject] {
         for JSONDictionary in arrayFromJSON {
-          if let forecastDictionary = JSONDictionary as? NSDictionary {
-            var weatherArray = forecastDictionary["weather"] as NSArray!
-            let weatherDictionary = weatherArray.firstObject as NSDictionary!
+          if let forecastDictionary = JSONDictionary as? [String : AnyObject] {
+            var weatherArray = forecastDictionary["weather"] as [AnyObject]!
+            let weatherDictionary = weatherArray.first as [String : AnyObject]!
             let tempDictionary = forecastDictionary["temp"] as [String: AnyObject]
               // Create and cast values to initialize Forecast
             let forecastDateCode = forecastDictionary["dt"] as Double
